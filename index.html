@@ -249,6 +249,116 @@
             
               
                 
+                <a class="post-title-link" href="/2017/05/29/gradle-introduction/" itemprop="url">
+                  Gradle简介
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-29T16:18:44+08:00" content="2017-05-29">
+              2017-05-29
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>Gradle</strong>是一个基于<a href="https://zh.wikipedia.org/wiki/Apache_Ant" target="_blank" rel="external">Apache Ant</a>和<a href="https://zh.wikipedia.org/wiki/Apache_Maven" target="_blank" rel="external">Apache Maven</a>概念的项目<a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E5%8B%95%E5%8C%96%E5%BB%BA%E6%A7%8B" target="_blank" rel="external">自动化建构</a>工具。它使用一种基于<a href="https://zh.wikipedia.org/wiki/Groovy" target="_blank" rel="external">Groovy</a>的<a href="https://zh.wikipedia.org/w/index.php?title=%E7%89%B9%E5%AE%9A%E9%A2%86%E5%9F%9F%E8%AF%AD%E8%A8%80&amp;action=edit&amp;redlink=1" target="_blank" rel="external">特定领域语言</a>来声明项目设置，而不是传统的<a href="https://zh.wikipedia.org/wiki/XML" target="_blank" rel="external">XML</a>。</p>
+<p>当前其支持的语言限于<a href="https://zh.wikipedia.org/wiki/Java" target="_blank" rel="external">Java</a>、<a href="https://zh.wikipedia.org/wiki/Groovy" target="_blank" rel="external">Groovy</a>和<a href="https://zh.wikipedia.org/wiki/Scala" target="_blank" rel="external">Scala</a>。</p>
+<p>为什么需要项目自动构建工具？</p>
+<p>要实现一款适应生产环境的软件除了编写核心代码，还要运行测试，构建分布、分析代码质量、甚至为不同目标环境提供不同版本，然后部署。整个过程繁琐，容易出错进行自动化操作是很有必要的。</p>
+<p>Gradle比maven更简洁，因为groovy脚本比xml间接的多。<br>更灵活，各种在Maven中难以下手的事情，在Gradle就是小菜一碟，比如修改现有的构建生命周期，几行配置就完成了，同样的事情，在Maven中你必须编写一个插件，那对于一个刚入门的用户来说，没个一两天几乎是不可能完成的任务。</p>
+<p>Gradle初体验：</p>
+<p>Gradle的安装非常方便，下载ZIP包，解压到本地目录，设置 GRADLE_HOME 环境变量并将 GRADLE_HOME/bin 加到 PATH 环境变量中，安装就完成了。</p>
+<p>若是采用IntelliJ idea创建gradle项目可以选择自行下载的gradle也可以选择idea自带的gradle。</p>
+<p>类似于Maven的<code>pom.xml</code>文件，每个Gradle项目都需要有一个对应的<code>build.gradle</code>文件，该文件定义一些任务（task）来完成构建工作，当然，每个任务是可配置的，任务之间也可以依赖，用户亦能配置缺省任务。</p>
+<p>这种“任务”的概念与用法与Ant及其相似。</p>
+<p>gradle也继承了maven基于仓库的依赖管理的理念，而且gradle也使用maven中央仓库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">repositories &#123;</div><div class="line">    mavenLocal()</div><div class="line">    mavenCentral()</div><div class="line">    mavenRepo urls: &quot;http://repository.sonatype.org/content/groups/forge/&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这段代码几乎不用解释，就是在Gradle中配置使用Maven本地仓库、中央仓库、以及自定义地址仓库。在我实际构建项目的时候，能看到终端打印的下载信息，下载后的文件被存储在 <code>USER_HOME/.gradle/cache/</code> 目录下供项目使用，这种实现的方法与Maven又是及其类似了，可以说Gradle不仅最大限度的继承Maven的很多理念，仓库资源也是直接拿来用。</p>
+<p>Gradle项目不仅可以使用maven仓库来处理依赖，Gradle项目生成的构件还可以发布到Maven仓库中供人使用。使用Gradle的Maven Plugin，用户就可以轻松地将项目构件上传到Maven仓库中。</p>
+<p>gradle构建生命周期，包括编译主代码、处理资源、编译测试代码、执行测试、上传归档等等任务：</p>
+<p><img src="../images/gradlelife.png" alt="gradlelife.png"></p>
+<p>​                                   gradle构建生命周期</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/30/bianma/" itemprop="url">
                   字符编码
                 </a>
@@ -467,7 +577,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
